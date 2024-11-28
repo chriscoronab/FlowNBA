@@ -2,11 +2,11 @@
 
 Developer: Christian Corona
 
-## Descripción
+## About
 
-E-commerce de artículos relacionados a los equipos de la NBA
+An intuitive and efficient NBA t-shirt e-commerce platform with features that allow users to select the size and quantity of each product
 
-## Tecnologías
+## Technologies
 
 HTML5, CSS3, JavaScript, React, Firebase, Material UI, Formik
 
