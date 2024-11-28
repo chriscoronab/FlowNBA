@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBg9o1uv_eBULucRfh8iW1_ClbC4qz2jBQ",
@@ -17,6 +16,5 @@ export const db = initializeFirestore(firebaseApp, {
   experimentalForceLongPolling: true,
 });
 export const storage = getStorage(firebaseApp);
-export const auth = getAuth(firebaseApp);
 
 export default db;

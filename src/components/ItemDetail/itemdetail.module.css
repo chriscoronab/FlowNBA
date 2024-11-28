@@ -17,3 +17,14 @@
 .keepBuyingButton{
     margin-bottom: 1em;
 }
+
+@media (max-width: 768px){
+    .container{
+        flex-direction: column;
+        margin: 0 2em;
+    }
+    .image, .textContainer{
+        width: 100%;
+        margin: 1em 0;
+    }
+}

@@ -8,22 +8,7 @@ import * as Yup from "yup";
 import TextField from "@material-ui/core/TextField";
 import { styled } from "@mui/material/styles";
 import SubmitButton from "../Buttons/SubmitButton";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
-const provider = new GoogleAuthProvider();
-const auth = getAuth();
-
-signInWithPopup(auth, provider)
-  .then(result => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-  }).catch(error => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-  });
+import Spinner from "../Spinner";
 
 const initialValues = ({
     nombre: "",
@@ -51,9 +36,7 @@ const schema = Yup.object().shape({
         .email("Email inválido"),
     telefono: Yup
         .string()
-        .required("Se debe ingresar un número celular")
-        .min(10, "El número es demasiado corto")
-        .max(10, "El número es demasiado largo"),
+        .required("Se debe ingresar un número celular"),
     direccion: Yup
         .string()
         .required("Se debe ingresar una dirección")
@@ -91,9 +74,8 @@ const CssTextField = styled(TextField)({
 
 export default function Form({ setOrderId }) {
   const { cart, totalCompra, vaciarCarrito } = useContext(CartContext);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleSubmit = values => {
-    signInWithPopup(auth, provider);
     const order = {
       buyer: values,
       item: cart,
@@ -114,88 +96,93 @@ export default function Form({ setOrderId }) {
       })
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
-      onSubmit={handleSubmit}>
-        {formik => (
-          <form onSubmit={formik.handleSubmit} className={styles.form}>
-            <CssTextField
-              fullWidth
-              name="nombre"
-              label="Nombre"
-              type="text"
-              value={formik.values.nombre}
-              onChange={formik.handleChange}
-              error={formik.touched.nombre && Boolean(formik.errors.nombre)}
-              helperText={formik.touched.nombre && formik.errors.nombre}
-              variant="outlined"
-              style={{ marginBottom: 11 }}
-              required />
-            <CssTextField
-              fullWidth
-              name="apellido"
-              label="Apellido"
-              type="text"
-              value={formik.values.apellido}
-              onChange={formik.handleChange}
-              error={formik.touched.apellido && Boolean(formik.errors.apellido)}
-              helperText={formik.touched.apellido && formik.errors.apellido}
-              variant="outlined"
-              style={{ marginBottom: 11 }}
-              required />
-            <CssTextField
-              fullWidth
-              name="email"
-              label="Correo electrónico"
-              type="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-              variant="outlined"
-              style={{ marginBottom: 11 }}
-              required />
-            <CssTextField
-              fullWidth
-              name="telefono"
-              label="Teléfono"
-              type="tel"
-              value={formik.values.telefono}
-              onChange={formik.handleChange}
-              error={formik.touched.telefono && Boolean(formik.errors.telefono)}
-              helperText={formik.touched.telefono && formik.errors.telefono}
-              variant="outlined"
-              style={{ marginBottom: 11 }}
-              required />
-            <CssTextField
-              fullWidth
-              name="direccion"
-              label="Dirección"
-              type="text"
-              value={formik.values.direccion}
-              onChange={formik.handleChange}
-              error={formik.touched.direccion && Boolean(formik.errors.direccion)}
-              helperText={formik.touched.direccion && formik.errors.direccion}
-              variant="outlined"
-              style={{ marginBottom: 11 }}
-              required />
-            <CssTextField
-              fullWidth
-              name="cp"
-              label="Código Postal"
-              type="number"
-              value={formik.values.cp}
-              onChange={formik.handleChange}
-              error={formik.touched.cp && Boolean(formik.errors.cp)}
-              helperText={formik.touched.cp && formik.errors.cp}
-              variant="outlined"
-              required />
-            <div className={styles.submitButton}>
-              <SubmitButton />
-            </div>
-          </form>
-        )}
-    </Formik>
+    <>
+      { loading ? <Spinner />
+      :
+        <Formik
+          initialValues={initialValues}
+          validationSchema={schema}
+          onSubmit={handleSubmit}>
+            {formik => (
+              <form onSubmit={formik.handleSubmit} className={styles.form}>
+                <CssTextField
+                  fullWidth
+                  name="nombre"
+                  label="Nombre"
+                  type="text"
+                  value={formik.values.nombre}
+                  onChange={formik.handleChange}
+                  error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+                  helperText={formik.touched.nombre && formik.errors.nombre}
+                  variant="outlined"
+                  style={{ marginBottom: 11 }}
+                  required />
+                <CssTextField
+                  fullWidth
+                  name="apellido"
+                  label="Apellido"
+                  type="text"
+                  value={formik.values.apellido}
+                  onChange={formik.handleChange}
+                  error={formik.touched.apellido && Boolean(formik.errors.apellido)}
+                  helperText={formik.touched.apellido && formik.errors.apellido}
+                  variant="outlined"
+                  style={{ marginBottom: 11 }}
+                  required />
+                <CssTextField
+                  fullWidth
+                  name="email"
+                  label="Correo electrónico"
+                  type="email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
+                  variant="outlined"
+                  style={{ marginBottom: 11 }}
+                  required />
+                <CssTextField
+                  fullWidth
+                  name="telefono"
+                  label="Teléfono"
+                  type="tel"
+                  value={formik.values.telefono}
+                  onChange={formik.handleChange}
+                  error={formik.touched.telefono && Boolean(formik.errors.telefono)}
+                  helperText={formik.touched.telefono && formik.errors.telefono}
+                  variant="outlined"
+                  style={{ marginBottom: 11 }}
+                  required />
+                <CssTextField
+                  fullWidth
+                  name="direccion"
+                  label="Dirección"
+                  type="text"
+                  value={formik.values.direccion}
+                  onChange={formik.handleChange}
+                  error={formik.touched.direccion && Boolean(formik.errors.direccion)}
+                  helperText={formik.touched.direccion && formik.errors.direccion}
+                  variant="outlined"
+                  style={{ marginBottom: 11 }}
+                  required />
+                <CssTextField
+                  fullWidth
+                  name="cp"
+                  label="Código Postal"
+                  type="number"
+                  value={formik.values.cp}
+                  onChange={formik.handleChange}
+                  error={formik.touched.cp && Boolean(formik.errors.cp)}
+                  helperText={formik.touched.cp && formik.errors.cp}
+                  variant="outlined"
+                  required />
+                <div className={styles.submitButton}>
+                  <SubmitButton />
+                </div>
+              </form>
+            )}
+        </Formik>
+      }
+    </>
   );
 };

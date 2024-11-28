@@ -8,7 +8,7 @@ import Menu from "../Menu";
 
 const Nav = () => {
   let activeStyle = {
-    fontWeight: "bold",
+    fontWeight: "bold"
   };
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
@@ -17,6 +17,9 @@ const Nav = () => {
   return (
     <>
       <NavContainer>
+        <div className={styles.menu}>
+          <Menu handleClick={handleClick} />
+        </div>
         <div className={styles.logo}>
           <Link to="/">
             <img src={flowNBA} alt="storeName" />
@@ -29,12 +32,9 @@ const Nav = () => {
           <NavLink to="/category/west-side" style={({ isActive }) => (isActive ? activeStyle : undefined)} onClick={handleClick}>
             <p>West Side</p>
           </NavLink>
-          <Link to="/cart">
+          <Link to="/cart" onClick={handleClick}>
             <CartWidget />
           </Link>
-        </div>
-        <div className={styles.burger}>
-          <Menu handleClick={handleClick} />
         </div>
       </NavContainer>
     </>
@@ -60,28 +60,33 @@ const NavContainer = styled.nav`
     align-items: center;
 }
 .navItems p{
-    color: white;
-    margin: 0 1em;
+  color: white;
+  margin: 0 1em;
 }
 .navItems p:hover{
-    transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
 }
 
 @media (max-width: 768px){
   .navItems{
-      position: absolute;
-      margin: 0 auto;
-      top: -700px;
-      left: -2000px;
-      text-align: center;
-      transition: all .5s ease;
+    position: absolute;
+    margin: 0 auto;
+    top: -700px;
+    left: -2000px;
+    text-align: center;
+    transition: all .5s ease;
   }
   .navItems.active{
-      width: 50%;
-      display: block;
-      top: 110%;
-      left: 0;
-      background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 0.5em 0;
+    top: 100%;
+    left: 0;
+    background-color: black;
   }
-}
-`
+  .navItems.active a{
+    margin: 0.5em 0;
+  }
+}`;

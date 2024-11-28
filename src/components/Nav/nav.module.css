@@ -1,20 +1,14 @@
-.burger{
+.menu{
     display: none;
 }
 
 @media (max-width: 768px){
-    .burger{
+    .menu{
         display: block;
-        margin-left: 0.5em;
+        margin-left: 1em;
     }
     .logo img{
-        width: 105%;
+        width: 95%;
         margin: 0;
-    }
-    .eastSide{
-        padding: 0 0 1em 0;
-    }
-    .westSide{
-        padding-bottom: 1em;
     }
 }

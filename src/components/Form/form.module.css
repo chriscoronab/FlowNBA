@@ -5,3 +5,9 @@
 .submitButton{
     padding-top: 2em;
 }
+
+@media (max-width: 768px){
+    .form{
+        width: 95%;
+    }
+}
