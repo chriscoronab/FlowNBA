@@ -6,7 +6,7 @@
 .descripcion{
     padding-bottom: 0.3em;
 }
-.cardText{
+.card h3{
     margin-bottom: 0;
 }
 .removeButton{

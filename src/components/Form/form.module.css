@@ -1,11 +1,6 @@
 .form{
     margin: 2em auto 0 auto;
     width: 60%;
-    text-align: center;
-}
-.formInputs{
-    display: flex;
-    flex-direction: row;
 }
 .submitButton{
     padding-top: 2em;

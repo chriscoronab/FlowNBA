@@ -10,9 +10,9 @@ const ItemListFilteredContainer = ({ categoria }) => {
   const [loading, setLoading] = useState(true);
   const getItems = async () => {
     const itemsCollection = await getDocs(itemsRef);
-    const items = itemsCollection.docs.map((doc) => ({
+    const items = itemsCollection.docs.map(doc => ({
       ...doc.data(),
-      id: doc.id,
+      id: doc.id
     }));
     setItems(items);
     setLoading(false);
@@ -20,11 +20,10 @@ const ItemListFilteredContainer = ({ categoria }) => {
   useEffect(() => {
     getItems();
   }, []);
-  if(loading) {
-    return <Spinner />;
-  };
   return (
-    <ItemListFiltered items={items} categoria={categoria} />
+    <>
+      { loading ? <Spinner /> : <ItemListFiltered items={items} categoria={categoria} /> }
+    </>
   );
 };
 

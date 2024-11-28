@@ -1,10 +1,10 @@
-.logo img{
-    margin-left: 20em;
-    margin-right: 3em;
+.burger{
+    display: none;
 }
 
 @media (max-width: 768px){
     .burger{
+        display: block;
         margin-left: 0.5em;
     }
     .logo img{

@@ -1,12 +1,16 @@
+.checkout{
+    width: 85%;
+    margin: auto;
+}
 .checkoutTitle{
     text-align: center;
-}
-.checkoutSection{
-    margin: 0 2em 0 2em;
 }
 .orderId{
     color: rgb(14, 163, 59);
 }
 .itemListButton{
     margin-top: 3em;
+}
+.form{
+    margin-top: 4em;
 }

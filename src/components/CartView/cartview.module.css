@@ -1,22 +1,21 @@
 .cart{
-    text-align: center;
+    width: 85%;
+    margin: auto;
 }
-.cartList{
-    display: flex;
-    flex-direction: row;
-    flex-flow: row wrap;
-    justify-content: center;
+.emptyCart, .cartTitle{
+    text-align: center;
 }
 .cartTitle{
     margin: 1em 0;
-    text-align: center;
 }
-.buttonContainer{
+.cartList, .buttons{
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
-    margin-top: 2em;
 }
 .buttons{
+    margin-top: 2em;
+}
+.buttons div{
     margin: 0 1em;
 }

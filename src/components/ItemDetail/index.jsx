@@ -27,7 +27,7 @@ const ItemDetail = ({ item }) => {
             <img src={item.imagen} alt={item.nombre} className={styles.image} />
             <div className={styles.textContainer}>
                 <Typography gutterBottom variant="h4" component="div" key={item.id}>
-                    {item.nombre}
+                    <b>{item.nombre}</b>
                 </Typography>
                 <p className={styles.text}>{item.descripcion}</p>
                 <p className={styles.text}>Precio: $ {item.precio.toLocaleString()} </p>

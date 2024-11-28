@@ -12,31 +12,29 @@ const Nav = () => {
   };
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
-    setClicked(!clicked)
+    setClicked(!clicked);
   };
   return (
     <>
       <NavContainer>
-        <div className={styles.burger}>
-          <Menu handleClick={handleClick} />
-        </div>
         <div className={styles.logo}>
-          <NavLink to="/">
+          <Link to="/">
             <img src={flowNBA} alt="storeName" />
-          </NavLink>
+          </Link>
         </div>
         <div className={`navItems ${clicked ? "active" : ""}`}>
           <NavLink to="/category/east-side" style={({ isActive }) => (isActive ? activeStyle : undefined)} onClick={handleClick}>
-            <p className={styles.eastSide}>East Side</p>
+            <p>East Side</p>
           </NavLink>
           <NavLink to="/category/west-side" style={({ isActive }) => (isActive ? activeStyle : undefined)} onClick={handleClick}>
-            <p className={styles.westSide}>West Side</p>
+            <p>West Side</p>
           </NavLink>
-        </div>
-        <div className={styles.cartWidget}>
           <Link to="/cart">
             <CartWidget />
           </Link>
+        </div>
+        <div className={styles.burger}>
+          <Menu handleClick={handleClick} />
         </div>
       </NavContainer>
     </>
@@ -53,7 +51,7 @@ const NavContainer = styled.nav`
   background-color: black;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   .navItems{
     display: flex;

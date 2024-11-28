@@ -17,18 +17,15 @@ const ItemDetailContainer = () => {
       setLoading(false);
     } else {
       document.body.innerHTML = "<h1>Producto no encontrado</h1>"
-    }
+    };
   };
   useEffect(() => {
     getItem();
   }, []);
-  if(loading) {
-    return <Spinner />;
-  };
   return (
-    <div>
-      <ItemDetail item={item} />
-    </div>
+    <>
+      { loading ? <Spinner /> : <ItemDetail item={item} /> }
+    </>
   );
 };
 

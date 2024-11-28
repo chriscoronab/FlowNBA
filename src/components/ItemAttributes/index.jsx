@@ -16,17 +16,15 @@ export default function ExampleProductAttributes({ handlerSetTalle }) {
           textTransform: "uppercase",
           fontSize: "xs",
           letterSpacing: "0.15rem",
-          color: "white",
-        }}
-      >
+          color: "white"
+        }}>
         Size
       </FormLabel>
       <RadioGroup
         aria-labelledby="product-size-attribute"
         defaultValue="M"
-        sx={{ gap: 2, mb: 1, flexWrap: "wrap", flexDirection: "row" }}
-      >
-        {["S", "M", "L", "XL"].map((size) => (
+        sx={{ gap: 2, mb: 1, flexWrap: "wrap", flexDirection: "row" }}>
+        {["S", "M", "L", "XL"].map(size => (
           <Sheet
             key={size}
             sx={{
@@ -39,22 +37,21 @@ export default function ExampleProductAttributes({ handlerSetTalle }) {
               alignItems: "center",
               justifyContent: "center",
               "--joy-focus-outlineOffset": "4px",
-              "--joy-palette-focusVisible": (theme) =>
+              "--joy-palette-focusVisible": theme =>
                 theme.vars.palette.neutral.outlinedBorder,
               [`& .${radioClasses.checked}`]: {
                 [`& .${radioClasses.label}`]: {
-                  fontWeight: "lg",
+                  fontWeight: "lg"
                 },
                 [`& .${radioClasses.action}`]: {
                   "--variant-borderWidth": "2px",
-                  borderColor: "text.secondary",
+                  borderColor: "text.secondary"
                 },
               },
               [`& .${radioClasses.action}.${radioClasses.focusVisible}`]: {
-                outlineWidth: "2px",
-              },
-            }}
-          >
+                outlineWidth: "2px"
+              }
+            }}>
             <Radio color="neutral" overlay disableIcon value={size} label={size} />
           </Sheet>
         ))}

@@ -1,6 +1,7 @@
 .itemlist{
     display: flex;
-    flex-direction: row;
     flex-flow: row wrap;
     justify-content: center;
+    width: 85%;
+    margin: 1em auto;
 }

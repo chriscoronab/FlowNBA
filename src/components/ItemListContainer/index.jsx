@@ -10,23 +10,20 @@ const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const getItems = async () => {
     const itemsCollection = await getDocs(itemsRef);
-    const items = itemsCollection.docs.map((doc) => ({
+    const items = itemsCollection.docs.map(doc => ({
       ...doc.data(),
-      id: doc.id,
+      id: doc.id
     }));
     setItems(items);
     setLoading(false);
-    };
-  useEffect(() => {
-  getItems();
-  }, []);
-  if(loading) {
-  return <Spinner />;
   };
+  useEffect(() => {
+    getItems();
+  }, []);
   return (
-    <div>
-        <ItemList items={items} />
-    </div>
+    <>
+      { loading ? <Spinner /> : <ItemList items={items} /> }
+    </>
   );
 };
 

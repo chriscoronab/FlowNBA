@@ -1,9 +1,3 @@
 .spinner{
-    margin: 15em 40em;
-}
-
-@media (max-width: 768px){
-    .spinner{
-        margin: 10em auto;
-    }
+    margin: auto;
 }
